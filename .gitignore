@@ -1,0 +1,21 @@
+# Repo-wide rules. App-specific rules live in each app's own .gitignore.
+
+# Dependencies
+node_modules/
+
+# Environment files (secrets). Commit a .env.example template instead.
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+*.swp

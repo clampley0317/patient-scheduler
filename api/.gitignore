@@ -1,0 +1,10 @@
+# NestJS API. Shared rules (node_modules, .env, OS files) are in the root .gitignore.
+
+# Build output
+/dist
+/build
+*.tsbuildinfo
+
+# Test coverage
+/coverage
+/.nyc_output
