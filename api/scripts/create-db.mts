@@ -8,7 +8,6 @@ function requireEnv(name: string): string {
   return value
 }
 
-// The app's DATABASE_URL is the source of truth for which role and database to create
 function parseAppDatabaseUrl(databaseUrl: string) {
   const url = new URL(databaseUrl)
   const user = decodeURIComponent(url.username)
@@ -50,7 +49,6 @@ async function main() {
       [database],
     )
     if (db.rowCount === 0) {
-      // Owning the database lets the app role create tables in the public schema (Postgres 15+)
       await client.query(
         `CREATE DATABASE ${client.escapeIdentifier(database)} OWNER ${client.escapeIdentifier(user)}`,
       )
@@ -63,7 +61,6 @@ async function main() {
   }
 }
 
-// exitCode instead of process.exit() so the finally block can close the connection
 main().catch((error: unknown) => {
   console.error(
     'Failed to create database:',
